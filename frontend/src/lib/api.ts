@@ -1,5 +1,6 @@
 /** Same-origin in dev (Vite proxy) so Flask session cookies work; direct URL for production builds. */
-const API_BASE_URL = import.meta.env.DEV ? "/api" : "http://127.0.0.1:5000/api";
+// Replace your line 2 with this:
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "/api" : "http://127.0.0.1:5000/api");
 
 const fetchOpts: RequestInit = { credentials: "include" };
 
