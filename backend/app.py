@@ -11,23 +11,10 @@ app = Flask(__name__)
 app.secret_key = "rxshield_secret_key_2026"
 
 
-def _cors_origins():
-    # Flask-CORS does not support a callable here; use strings and compiled regex only.
-    origins = [
-        re.compile(r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$"),
-        re.compile(r"^http://192\.168\.\d{1,3}\.\d{1,3}(:\d+)?$"),
-        re.compile(r"^http://10\.\d{1,3}\.\d{1,3}\.\d{1,3}(:\d+)?$"),
-        re.compile(
-            r"^http://172\.(1[6-9]|2[0-9]|3[0-1])\.\d{1,3}\.\d{1,3}(:\d+)?$"
-        ),
-    ]
-    for extra in os.environ.get("CORS_ORIGINS", "").split(","):
-        if extra.strip():
-            origins.append(extra.strip())
-    return origins
-
-
-CORS(app, supports_credentials=True, origins=_cors_origins())
+CORS(app, supports_credentials=True, origins=[
+    "http://localhost:8080",
+    "https://rx-shield.vercel.app"
+])
 
 # --- 1. AUTHENTICATION ---
 
