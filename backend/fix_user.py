@@ -5,7 +5,7 @@ from database import db_execute
 db_execute("DELETE FROM users WHERE email = 'doctor@rxshield.com'", is_select=False)
 
 # Create the fresh doctor account
-name = "Dr. Atishay"
+name = "Dr. Priyal"
 email = "doctor@rxshield.com"
 password = generate_password_hash("password123")
 
